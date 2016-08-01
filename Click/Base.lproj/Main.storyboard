@@ -43,11 +43,19 @@
                                     <action selector="onTappedAddAction:" destination="Bg8-AJ-QfM" eventType="touchUpInside" id="a9U-OU-9fl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-cf-KLT">
+                                <rect key="frame" x="334" y="717" width="80" height="19"/>
+                                <state key="normal" title="Edit Code"/>
+                                <connections>
+                                    <action selector="onTappedEdit:" destination="Bg8-AJ-QfM" eventType="touchUpInside" id="xTF-6t-MnF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3SO-bf-zTZ" firstAttribute="top" secondItem="5Tl-8B-xCa" secondAttribute="bottom" constant="20" id="50b-Fv-kcl"/>
                             <constraint firstItem="Zbb-3P-P6a" firstAttribute="top" secondItem="5Tl-8B-xCa" secondAttribute="bottom" constant="1" id="8SX-vB-jiq"/>
+                            <constraint firstItem="3SO-bf-zTZ" firstAttribute="top" secondItem="3ht-cf-KLT" secondAttribute="bottom" id="Dlw-TK-dqM"/>
                             <constraint firstItem="5Tl-8B-xCa" firstAttribute="leading" secondItem="TDt-x8-b7Y" secondAttribute="leadingMargin" constant="-20" id="Fu2-HS-QPU"/>
                             <constraint firstItem="b1p-VH-1iq" firstAttribute="top" secondItem="ihl-hh-sQq" secondAttribute="bottom" id="N25-MP-6iw"/>
                             <constraint firstItem="5Tl-8B-xCa" firstAttribute="top" secondItem="b1p-VH-1iq" secondAttribute="bottom" constant="8" id="O1e-Kl-5pV"/>
@@ -56,11 +64,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="5Tl-8B-xCa" secondAttribute="trailing" constant="-20" id="ZLh-No-L4R"/>
                             <constraint firstItem="Zbb-3P-P6a" firstAttribute="leading" secondItem="TDt-x8-b7Y" secondAttribute="leadingMargin" constant="-20" id="aRN-Dy-sXR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b1p-VH-1iq" secondAttribute="trailing" constant="-20" id="d1Z-bP-9zZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3ht-cf-KLT" secondAttribute="trailing" constant="-20" id="dOS-48-z2J"/>
                             <constraint firstItem="b1p-VH-1iq" firstAttribute="leading" secondItem="TDt-x8-b7Y" secondAttribute="leadingMargin" constant="-20" id="liu-Zh-Cq9"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="editButton" destination="3ht-cf-KLT" id="OOT-c8-M7U"/>
                         <outlet property="tableView" destination="5Tl-8B-xCa" id="Rrs-dD-uTg"/>
                     </connections>
                 </viewController>

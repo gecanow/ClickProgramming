@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIButton!
     var functions : [ActionCell] = []
     
     override func viewDidLoad() {
@@ -64,12 +65,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return true
     }
     
-    //func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-      //  let city = cities[sourceIndexPath.row]
-        //cities.removeAtIndex(sourceIndexPath.row)
-        //cities.insert(city, atIndex: destinationIndexPath.row)
-    //}
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let function = functions[sourceIndexPath.row]
+        functions.removeAtIndex(sourceIndexPath.row)
+        functions.insert(function, atIndex: destinationIndexPath.row)
+    }
     
+    @IBAction func onTappedEdit(sender: UIButton) {
+        if sender.tag == 0 {
+            tableView.editing = true
+            sender.tag = 1
+        } else {
+            tableView.editing = false
+            sender.tag = 0
+        }
+    }
     
     
 }
