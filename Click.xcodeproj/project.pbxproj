@@ -15,6 +15,7 @@
 		793283C81D4BC5C700C77A32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793283C61D4BC5C700C77A32 /* LaunchScreen.storyboard */; };
 		793283D31D4BC5C700C77A32 /* ClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793283D21D4BC5C700C77A32 /* ClickTests.swift */; };
 		793283DE1D4BC5C700C77A32 /* ClickUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793283DD1D4BC5C700C77A32 /* ClickUITests.swift */; };
+		883BA2761D4F99830094915D /* MyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883BA2751D4F99830094915D /* MyObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		793283D91D4BC5C700C77A32 /* ClickUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		793283DD1D4BC5C700C77A32 /* ClickUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickUITests.swift; sourceTree = "<group>"; };
 		793283DF1D4BC5C700C77A32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		883BA2751D4F99830094915D /* MyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				793283BA1D4BC5C700C77A32 /* AppDelegate.swift */,
 				793283BC1D4BC5C700C77A32 /* ViewController.swift */,
+				883BA2751D4F99830094915D /* MyObject.swift */,
 				793283BE1D4BC5C700C77A32 /* Main.storyboard */,
 				793283C41D4BC5C700C77A32 /* Assets.xcassets */,
 				793283C61D4BC5C700C77A32 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				793283C31D4BC5C700C77A32 /* Click.xcdatamodeld in Sources */,
 				793283BD1D4BC5C700C77A32 /* ViewController.swift in Sources */,
+				883BA2761D4F99830094915D /* MyObject.swift in Sources */,
 				793283BB1D4BC5C700C77A32 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +490,7 @@
 				793283E41D4BC5C700C77A32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		793283E51D4BC5C700C77A32 /* Build configuration list for PBXNativeTarget "ClickTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +499,7 @@
 				793283E71D4BC5C700C77A32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		793283E81D4BC5C700C77A32 /* Build configuration list for PBXNativeTarget "ClickUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +508,7 @@
 				793283EA1D4BC5C700C77A32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
