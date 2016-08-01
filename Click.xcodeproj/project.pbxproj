@@ -15,6 +15,8 @@
 		793283C81D4BC5C700C77A32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793283C61D4BC5C700C77A32 /* LaunchScreen.storyboard */; };
 		793283D31D4BC5C700C77A32 /* ClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793283D21D4BC5C700C77A32 /* ClickTests.swift */; };
 		793283DE1D4BC5C700C77A32 /* ClickUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793283DD1D4BC5C700C77A32 /* ClickUITests.swift */; };
+		882A42DA1D4FD36900F9DAF2 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A42D81D4FD36900F9DAF2 /* Board.swift */; };
+		882A42DB1D4FD36900F9DAF2 /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A42D91D4FD36900F9DAF2 /* BoardSquare.swift */; };
 		883BA2761D4F99830094915D /* MyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883BA2751D4F99830094915D /* MyObject.swift */; };
 		883BA27A1D4FA0520094915D /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883BA2791D4FA0520094915D /* ActionCell.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,8 @@
 		793283D91D4BC5C700C77A32 /* ClickUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		793283DD1D4BC5C700C77A32 /* ClickUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickUITests.swift; sourceTree = "<group>"; };
 		793283DF1D4BC5C700C77A32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		882A42D81D4FD36900F9DAF2 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.swift; path = ../../Maze/Maze/Board.swift; sourceTree = "<group>"; };
+		882A42D91D4FD36900F9DAF2 /* BoardSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoardSquare.swift; path = ../../Maze/BoardSquare.swift; sourceTree = "<group>"; };
 		883BA2751D4F99830094915D /* MyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyObject.swift; sourceTree = "<group>"; };
 		883BA2791D4FA0520094915D /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +109,8 @@
 			children = (
 				793283BA1D4BC5C700C77A32 /* AppDelegate.swift */,
 				793283BC1D4BC5C700C77A32 /* ViewController.swift */,
+				882A42D81D4FD36900F9DAF2 /* Board.swift */,
+				882A42D91D4FD36900F9DAF2 /* BoardSquare.swift */,
 				883BA2791D4FA0520094915D /* ActionCell.swift */,
 				883BA2751D4F99830094915D /* MyObject.swift */,
 				793283BE1D4BC5C700C77A32 /* Main.storyboard */,
@@ -266,7 +272,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				793283C31D4BC5C700C77A32 /* Click.xcdatamodeld in Sources */,
+				882A42DB1D4FD36900F9DAF2 /* BoardSquare.swift in Sources */,
 				793283BD1D4BC5C700C77A32 /* ViewController.swift in Sources */,
+				882A42DA1D4FD36900F9DAF2 /* Board.swift in Sources */,
 				883BA2761D4F99830094915D /* MyObject.swift in Sources */,
 				883BA27A1D4FA0520094915D /* ActionCell.swift in Sources */,
 				793283BB1D4BC5C700C77A32 /* AppDelegate.swift in Sources */,

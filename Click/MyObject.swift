@@ -15,10 +15,21 @@ class MyObject: UILabel {
     var turnDegrees = 0.0
     var distance = 0.0
     
-    //==================================================
-    // ACTION FUNCTIONS
-    //==================================================
+    var destinationBoardSquare : BoardSquare?
     
+    convenience init(center: CGPoint, width: CGFloat) {
+        self.init()
+        self.frame = CGRectMake(0, 0, width, width)
+        self.center = center
+    }
+    
+    //------------------//
+    // ACTION FUNCTIONS //
+    //------------------//
+    
+    //=========================================================
+    // Handles moving forward a certain distance
+    //=========================================================
     func moveForward() {
         UIView.animateWithDuration(2.0) {
             self.center.x += CGFloat(cos(self.radians) * self.distance)
@@ -26,6 +37,9 @@ class MyObject: UILabel {
         }
     }
     
+    //=========================================================
+    // Handles turning a certain radians
+    //=========================================================
     func turn() {
         radians += (turnDegrees * 3.14 / 180)
         self.transform = CGAffineTransformMakeRotation(CGFloat(radians))

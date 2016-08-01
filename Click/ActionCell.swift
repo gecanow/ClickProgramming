@@ -10,13 +10,37 @@ import UIKit
 
 class ActionCell: NSObject {
     
-    // nothing to do yet...
+    var name = ""
+    var full = ""
     
-    // has a name for debugging purposes
-    var name = "action"
+    var myLabel : UILabel!
+    var myButton : UIButton!
     
-    convenience init(name: String) {
+    //=========================================================
+    // INIT -- @param FULL, NAME, COLOR, BUTTON-TEXT
+    //=========================================================
+    convenience init(full: String, name: String, color: UIColor, buttonText: String) {
+        self.init()
+        
         self.name = name
+        self.full = full
+        
+        myLabel = UILabel(frame: CGRectMake(50, 0, 150, 50))
+        myLabel.text = full
+        
+        myButton = UIButton(frame: CGRectMake(170, 10, 50, 30))
+        myButton.backgroundColor = color
+        myButton.setTitle(buttonText, forState: .Normal)
+        myButton.addTarget(self, action: #selector(cellButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    //=========================================================
+    // Handles when a cell button is pressed, and loads
+    // a popover view
+    //=========================================================
+    func cellButtonPressed(sender: UIButton) {
+        print("button pressed!!!!")
+        // will hold the popover view code
     }
     
 }

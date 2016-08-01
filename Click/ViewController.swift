@@ -12,12 +12,60 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var simulator: UIView!
+    
     var functions : [ActionCell] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var board = Board(width: 6, length: 9)
+    
+    enum ReturnOption {
+        case Move
+        case Turn
     }
     
+    //=================================================
+    // VIEW DID LOAD FUNCTION
+    //=================================================
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        board.loadBoard(simulator)
+    }
+    
+    //=================================================
+    // VIEW WILL APPEAR FUNCTION
+    //=================================================
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    //=================================================
+    // Handles converting the code to the player's
+    // actions
+    //=================================================
+    @IBAction func onTappedRunCode(sender: UIButton) {
+        
+        board.player.center = board.playerCell.image.center
+        board.player.radians = 0.0
+        
+        var count = 0.0
+        let countI = 2.0
+        
+        for action in functions {
+            if action.name == "Move" {
+                
+                let x = Double((action.myButton.titleLabel?.text)!)
+                
+                
+                board.player.distance = x! * board.board[0][0].image.width
+                NSTimer.scheduledTimerWithTimeInterval(count, target: board.player, selector: #selector(board.player.moveForward), userInfo: nil, repeats: false)
+                count += countI
+            } else {
+                board.player.turnDegrees = 90.0
+                NSTimer.scheduledTimerWithTimeInterval(count, target: board.player, selector: #selector(board.player.turn), userInfo: nil, repeats: false)
+            }
+        }
+    }
     
     //=================================================
     // SETUP & UPDATE THE TABLEVIEW
@@ -27,10 +75,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         
-        // Configure the cell...
-        cell.textLabel?.text = "\(functions[indexPath.row].name) \(indexPath.row)"
+        cell.textLabel?.text = "\(indexPath.row)"
+        cell.textLabel?.textColor = UIColor.grayColor()
+        cell.contentView.addSubview(functions[indexPath.row].myButton)
+        cell.contentView.addSubview(functions[indexPath.row].myLabel)
         
         return cell
     }
@@ -49,13 +100,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ALLOW FOR FUNCTIONS TO BE ADDED
     //=================================================
     @IBAction func onTappedAddAction(sender: UIButton) {
+        //Action Sheet
+        let actionController = UIAlertController(title: "Select an option.", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let moveAction = UIAlertAction(title: "Move ()", style: .Default) { (action) in
+            self.functions.append(ActionCell(full: "Move Forward: ", name: "Move", color: UIColor.greenColor(), buttonText: "0"))
+            self.tableView.reloadData()
+        }
         
-        // first i call on the action sheet which returns a string to me
-        let actionStr = ""
+        let turnToFaceAction = UIAlertAction(title: "Turn ()", style: .Default) { (action) in
+            self.functions.append(ActionCell(full: "Turn To Face: ", name: "Turn", color: UIColor.blueColor(), buttonText: "East"))
+            self.tableView.reloadData()
+        }
         
-        functions.append(ActionCell(name: actionStr))
-        tableView.reloadData()
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
+        actionController.addAction(moveAction)
+        actionController.addAction(turnToFaceAction)
+        actionController.addAction(cancelAction)
+        
+        self.presentViewController(actionController, animated: true, completion: nil)
     }
     
     //=================================================
@@ -80,7 +143,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             sender.tag = 0
         }
     }
-    
-    
 }
 
