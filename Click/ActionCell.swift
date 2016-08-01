@@ -12,7 +12,11 @@ class ActionCell: NSObject {
     
     // nothing to do yet...
     
-    // has a name for debugginh purposes
+    // has a name for debugging purposes
     var name = "action"
+    
+    convenience init(name: String) {
+        self.name = name
+    }
     
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     var functions : [ActionCell] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +44,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //=================================================
+    // ALLOW FOR FUNCTIONS TO BE ADDED
+    //=================================================
     @IBAction func onTappedAddAction(sender: UIButton) {
         
         // first i call on the action sheet which returns a string to me
+        let actionStr = ""
+        
+        functions.append(ActionCell(name: actionStr))
+        tableView.reloadData()
         
     }
+    
+    //=================================================
+    // ALLOW FOR ROWS TO BE MOVED
+    //=================================================
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    //func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+      //  let city = cities[sourceIndexPath.row]
+        //cities.removeAtIndex(sourceIndexPath.row)
+        //cities.insert(city, atIndex: destinationIndexPath.row)
+    //}
     
     
     
