@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Click
 //
-//  Created by Diva Harsoor on 7/29/16.
+//  Created by Diva Harsoor, Gaby Ecanow, and Aaron Lichtman on 7/29/16.
 //  Copyright © 2016 Mobile Makers. All rights reserved.
 //
 
