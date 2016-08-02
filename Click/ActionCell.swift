@@ -10,28 +10,39 @@ import UIKit
 
 class ActionCell: NSObject {
     
+    var type : ActionType!
     var name = ""
-    var full = ""
     
     var myLabel : UILabel!
     var myButton : UIButton!
     
+    var isMutable = true
+    
     //=========================================================
     // INIT -- @param FULL, NAME, COLOR, BUTTON-TEXT
     //=========================================================
-    convenience init(full: String, name: String, color: UIColor, buttonText: String) {
+    convenience init(name: String, type: ActionType, color: UIColor, buttonText: String) {
         self.init()
         
         self.name = name
-        self.full = full
+        self.type = type
         
         myLabel = UILabel(frame: CGRectMake(50, 0, 150, 50))
-        myLabel.text = full
+        myLabel.text = name
         
         myButton = UIButton(frame: CGRectMake(170, 10, 50, 30))
         myButton.backgroundColor = color
         myButton.setTitle(buttonText, forState: .Normal)
         myButton.addTarget(self, action: #selector(cellButtonPressed), forControlEvents: .TouchUpInside)
+    }
+    
+    convenience init(name: String, color: UIColor) {
+        self.init()
+        
+        self.name = name
+        myLabel = UILabel(frame: CGRectMake(50, 0, 300, 50))
+        
+        isMutable = false
     }
     
     //=========================================================
@@ -40,7 +51,21 @@ class ActionCell: NSObject {
     //=========================================================
     func cellButtonPressed(sender: UIButton) {
         
-        myButton.setTitle(String(Int(myButton.titleLabel!.text!)! + 1), forState: .Normal)
+        if type == ActionType.Move {
+            myButton.setTitle(String(Int(myButton.titleLabel!.text!)! + 1), forState: .Normal)
+        } else if type == ActionType.Turn {
+            
+            let options = ["North", "East", "South", "West"]
+            var index = Int(options.indexOf((myButton.titleLabel?.text)!)!)
+            
+            if index == options.count - 1 {
+                index = 0
+            } else {
+                index += 1
+            }
+            
+            myButton.setTitle(options[index], forState: .Normal)
+        } else {}
         
         // *** will hold the popover view code
     }

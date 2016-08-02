@@ -8,6 +8,14 @@
 
 import UIKit
 
+//***********************//
+// ADD ACTION TYPES HERE //
+//***********************//
+enum ActionType {
+    case Move
+    case Turn
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -41,7 +49,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //=================================================
     // Handles converting the code to the player's
-    // actions
+    // actions:
+    // Current actions include Move and Turn
     //=================================================
     @IBAction func onTappedRunCode(sender: UIButton) {
         
@@ -51,7 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         for action in functions {
             
-            if action.name == "Move" {
+            if action.type == .Move {
                 
                 let cellAmount = Double((action.myButton.titleLabel?.text)!)
                 let widthPerCell = Double(board.board[0][0].image.frame.width)
@@ -62,11 +71,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 count += 2.0
                 
-            } else {
+            } else if action.type == .Turn {
                 
-                board.player.turnDegrees = 90.0
+                board.player.direction = (action.myButton.titleLabel?.text)!
                 NSTimer.scheduledTimerWithTimeInterval(count, target: board.player, selector: #selector(board.player.turn), userInfo: nil, repeats: false)
-            }
+                
+            } else {}
             
         }
     }
@@ -84,8 +94,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.textLabel?.text = "\(indexPath.row)"
         cell.textLabel?.textColor = UIColor.grayColor()
-        cell.contentView.addSubview(functions[indexPath.row].myButton)
-        cell.contentView.addSubview(functions[indexPath.row].myLabel)
+        
+        if functions[indexPath.row].isMutable {
+            cell.contentView.addSubview(functions[indexPath.row].myLabel)
+            cell.contentView.addSubview(functions[indexPath.row].myButton)
+        } else {
+            cell.contentView.addSubview(functions[indexPath.row].myLabel)
+            cell.userInteractionEnabled = false
+        }
         
         return cell
     }
@@ -107,12 +123,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Action Sheet
         let actionController = UIAlertController(title: "Select an option.", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let moveAction = UIAlertAction(title: "Move ()", style: .Default) { (action) in
-            self.functions.append(ActionCell(full: "Move Forward: ", name: "Move", color: UIColor.greenColor(), buttonText: "0"))
+            self.functions.append(ActionCell(name: "Move Forward: ", type: .Move, color: UIColor.greenColor(), buttonText: "0"))
             self.tableView.reloadData()
         }
         
         let turnToFaceAction = UIAlertAction(title: "Turn ()", style: .Default) { (action) in
-            self.functions.append(ActionCell(full: "Turn To Face: ", name: "Turn", color: UIColor.blueColor(), buttonText: "East"))
+            self.functions.append(ActionCell(name: "Turn To Face: ", type: .Turn, color: UIColor.blueColor(), buttonText: "East"))
             self.tableView.reloadData()
         }
         

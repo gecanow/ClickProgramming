@@ -11,7 +11,7 @@ import UIKit
 class MyObject: UILabel {
 
     var radians = 0.0
-    var turnDegrees = 0.0
+    var direction = "East"
     
     var distance = 0.0
     
@@ -58,7 +58,14 @@ class MyObject: UILabel {
     // Handles turning a certain radians
     //=========================================================
     func turn() {
-        radians += (turnDegrees * 3.14 / 180)
+        switch (direction) {
+            case "East"  : radians = 0.0
+            case "South" : radians = M_PI / 2
+            case "West"  : radians = M_PI
+            case "North" : radians = 3 * M_PI / 2
+            default      : radians = 0.0
+        }
+        
         self.transform = CGAffineTransformMakeRotation(CGFloat(radians))
     }
     
