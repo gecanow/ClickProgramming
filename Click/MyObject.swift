@@ -18,6 +18,9 @@ class MyObject: UILabel {
     var startCenter : CGPoint!
     var destinationBoardSquare : BoardSquare?
     
+    //=========================================================
+    // INIT: @param CENTER, WIDTH
+    //=========================================================
     convenience init(center: CGPoint, width: CGFloat) {
         self.init()
         startCenter = center
@@ -33,6 +36,10 @@ class MyObject: UILabel {
         self.addSubview(imageView)
     }
     
+    //=========================================================
+    // Handles resetting the player to be in
+    // the top left corner and facing east
+    //=========================================================
     func reset() {
         self.center = startCenter
         self.transform = CGAffineTransformMakeRotation(0)

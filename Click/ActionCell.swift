@@ -19,7 +19,7 @@ class ActionCell: NSObject {
     var isMutable = true
     
     //=========================================================
-    // INIT -- @param FULL, NAME, COLOR, BUTTON-TEXT
+    // INIT -- @param NAME, TYPE, COLOR, BUTTON-TEXT
     //=========================================================
     convenience init(name: String, type: ActionType, color: UIColor, buttonText: String) {
         self.init()
@@ -36,6 +36,9 @@ class ActionCell: NSObject {
         myButton.addTarget(self, action: #selector(cellButtonPressed), forControlEvents: .TouchUpInside)
     }
     
+    //=========================================================
+    // INIT -- @param NAME, COLOR
+    //=========================================================
     convenience init(name: String, color: UIColor) {
         self.init()
         
@@ -52,17 +55,15 @@ class ActionCell: NSObject {
     func cellButtonPressed(sender: UIButton) {
         
         if type == ActionType.Move {
+            
             myButton.setTitle(String(Int(myButton.titleLabel!.text!)! + 1), forState: .Normal)
+            
         } else if type == ActionType.Turn {
             
             let options = ["North", "East", "South", "West"]
-            var index = Int(options.indexOf((myButton.titleLabel?.text)!)!)
+            var index = Int(options.indexOf((myButton.titleLabel?.text)!)!) + 1
             
-            if index == options.count - 1 {
-                index = 0
-            } else {
-                index += 1
-            }
+            if index == options.count { index = 0 }
             
             myButton.setTitle(options[index], forState: .Normal)
         } else {}

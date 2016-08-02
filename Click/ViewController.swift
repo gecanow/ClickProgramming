@@ -26,11 +26,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var board = Board(width: 6, length: 9)
     
-    enum ReturnOption {
-        case Move
-        case Turn
-    }
-    
     //=================================================
     // VIEW DID LOAD FUNCTION
     //=================================================
@@ -66,7 +61,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let widthPerCell = Double(board.board[0][0].image.frame.width)
                 
                 board.player.distance = cellAmount! * widthPerCell
-                
                 NSTimer.scheduledTimerWithTimeInterval(count, target: board.player, selector: #selector(board.player.moveForward), userInfo: nil, repeats: false)
                 
                 count += 2.0
