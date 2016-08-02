@@ -11,16 +11,33 @@ import UIKit
 class MyObject: UILabel {
 
     var radians = 0.0
-    
     var turnDegrees = 0.0
+    
     var distance = 0.0
     
+    var startCenter : CGPoint!
     var destinationBoardSquare : BoardSquare?
     
     convenience init(center: CGPoint, width: CGFloat) {
         self.init()
-        self.frame = CGRectMake(0, 0, width, width)
+        startCenter = center
+        
+        let w = width * 1.5
+        
+        self.frame = CGRectMake(0, 0, w, w)
         self.center = center
+        
+        let imageView = UIImageView(frame: self.frame)
+        imageView.contentMode = .ScaleAspectFill
+        imageView.image = UIImage(named: "turtle")
+        self.addSubview(imageView)
+    }
+    
+    func reset() {
+        self.center = startCenter
+        self.transform = CGAffineTransformMakeRotation(0)
+        
+        radians = 0
     }
     
     //------------------//

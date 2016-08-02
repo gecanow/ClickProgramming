@@ -45,25 +45,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //=================================================
     @IBAction func onTappedRunCode(sender: UIButton) {
         
-        board.player.center = board.playerCell.image.center
-        board.player.radians = 0.0
+        board.player.reset()
         
         var count = 0.0
-        let countI = 2.0
         
         for action in functions {
+            
             if action.name == "Move" {
                 
-                let x = Double((action.myButton.titleLabel?.text)!)
+                let cellAmount = Double((action.myButton.titleLabel?.text)!)
+                let widthPerCell = Double(board.board[0][0].image.frame.width)
                 
+                board.player.distance = cellAmount! * widthPerCell
                 
-                board.player.distance = x! * board.board[0][0].image.width
                 NSTimer.scheduledTimerWithTimeInterval(count, target: board.player, selector: #selector(board.player.moveForward), userInfo: nil, repeats: false)
-                count += countI
+                
+                count += 2.0
+                
             } else {
+                
                 board.player.turnDegrees = 90.0
                 NSTimer.scheduledTimerWithTimeInterval(count, target: board.player, selector: #selector(board.player.turn), userInfo: nil, repeats: false)
             }
+            
         }
     }
     

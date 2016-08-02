@@ -31,7 +31,7 @@ class ActionCell: NSObject {
         myButton = UIButton(frame: CGRectMake(170, 10, 50, 30))
         myButton.backgroundColor = color
         myButton.setTitle(buttonText, forState: .Normal)
-        myButton.addTarget(self, action: #selector(cellButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+        myButton.addTarget(self, action: #selector(cellButtonPressed), forControlEvents: .TouchUpInside)
     }
     
     //=========================================================
@@ -39,8 +39,10 @@ class ActionCell: NSObject {
     // a popover view
     //=========================================================
     func cellButtonPressed(sender: UIButton) {
-        print("button pressed!!!!")
-        // will hold the popover view code
+        
+        myButton.setTitle(String(Int(myButton.titleLabel!.text!)! + 1), forState: .Normal)
+        
+        // *** will hold the popover view code
     }
     
 }
